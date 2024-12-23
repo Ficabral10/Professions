@@ -1,0 +1,11 @@
+<div class="component-container" *ngIf="card" (click)="!card.flipped ? flipCard() : null">
+  <div class="back-face" [attr.visible]="!card.flipped">
+    <span>
+      Memory Card Game
+    </span>
+  </div>
+
+  <div class="front-face" [attr.visible]="card.flipped">
+    {{card.image}}
+  </div>
+</div>

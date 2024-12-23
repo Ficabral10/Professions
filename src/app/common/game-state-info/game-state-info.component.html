@@ -1,0 +1,13 @@
+<div class="component-container" *ngIf="type">
+  <div class="icon-container">
+    <img src="assets/images/{{type}}.png" alt="">
+  </div>
+  <div class="value-container">
+    {{type | titlecase}}: 
+    {{
+      type === 'score' 
+      ? (gameSessionService.currentScore$ | async)
+      : (gameSessionService.currentTimer$ | async)
+    }}
+  </div>
+</div>

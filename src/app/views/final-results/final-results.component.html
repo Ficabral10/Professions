@@ -1,0 +1,6 @@
+<div class="component-container" *ngIf="formattedSummary$ | async">
+  <p [innerHTML]="formattedSummary$ | async">
+  </p>
+
+  <button (click)="gameSessionService.resetSession()">Restart</button>
+</div>

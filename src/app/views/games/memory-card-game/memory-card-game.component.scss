@@ -1,0 +1,18 @@
+.component-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+}
+
+@media(max-width: 700px) {
+  .component-container {
+    gap: 2rem;
+  }
+}
+
+@media(max-width: 512px) {
+  .component-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+

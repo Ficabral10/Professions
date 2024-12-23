@@ -1,0 +1,36 @@
+.component-container {
+  display: flex;
+  align-items: center;
+
+  .icon-container {
+    min-height: 4rem;
+    max-height: 4rem;
+    min-width: 4rem;
+    max-width: 4rem;
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--component-background-color);
+    z-index: 2;
+
+    img {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
+
+  .value-container {
+    width: 9rem;
+    height: 2.6rem;
+    border-radius: var(--border-radius);
+    background-color: var(--component-background-color-light);
+    z-index: 1;
+    margin-left: -2rem;
+
+    display: flex;
+    align-items: center;
+    padding-left: 2.8rem;
+  }
+}

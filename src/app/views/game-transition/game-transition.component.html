@@ -1,0 +1,10 @@
+<div class="component-container">
+  <p>
+    Score: {{ (gameSessionService.transitionParams$ | async)?.score }}
+  </p>
+  <p>
+    Time used: {{ (gameSessionService.transitionParams$ | async)?.timeUsed }} seconds
+  </p>
+
+  <p [innerHTML]="(gameSessionService.transitionParams$ | async)?.nextStepText"></p>
+</div>

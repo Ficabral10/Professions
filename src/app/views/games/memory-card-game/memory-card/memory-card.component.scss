@@ -1,0 +1,62 @@
+.component-container {
+  --component-size: 7rem;
+
+  min-width: var(--component-size);
+  max-width: var(--component-size);
+  min-height: var(--component-size);
+  max-height: var(--component-size);
+  border-radius: var(--border-radius);
+  background-color: var(--component-background-color);
+  position: relative;
+  overflow: hidden;
+
+  cursor: pointer;
+  user-select: none;
+
+  .back-face, .front-face {
+    user-select: none;
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform-origin: center;
+
+    width: var(--component-size);
+    height: var(--component-size);
+
+    transition: right 0.5s, left 0.5s;
+  }
+
+  .back-face {
+    position: relative;
+    
+    span {
+      position: absolute;
+      top: 2.5rem;      
+    }
+
+    &[visible="true"] {
+      right: 0;
+    } 
+
+    &[visible="false"] {
+      right: 100%;
+    }
+  }
+
+  .front-face {
+    font-size: 2rem;
+
+    &[visible="true"] {
+      left: 0;
+    }
+
+    &[visible="false"] {
+      left: 100%;
+    }
+  }
+}

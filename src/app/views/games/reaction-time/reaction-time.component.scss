@@ -1,0 +1,24 @@
+.component-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  span {
+    color: var(--heading-color);
+    font-family: var(--text-font);
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .target-color-name {
+    font-size: 26px;
+  }
+
+  .displayed-color {
+    width: 13rem;
+    height: 13rem;
+    max-width: 95vw;
+    border-radius: 50%;
+  }
+}

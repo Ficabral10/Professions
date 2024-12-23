@@ -1,0 +1,21 @@
+<div class="component-container">
+  <div class="images-container">
+    <div class="image-container">
+      <img [src]="spotTheDifferenceService.correctImage" alt="Correct Image" class="image" (click)="spotTheDifferenceService.onImageClick($event)">
+      <div *ngFor="let error of (spotTheDifferenceService.foundErrors$ | async)" class="error-marker" [style.left]="error.x + '%'" [style.top]="error.y + '%'"></div>
+    </div>
+    <div class="image-container">
+      <img [src]="spotTheDifferenceService.wrongImage" alt="Wrong Image" class="image" (click)="spotTheDifferenceService.onImageClick($event)">
+      <div *ngFor="let error of (spotTheDifferenceService.foundErrors$ | async)" class="error-marker" [style.left]="error.x + '%'" [style.top]="error.y + '%'"></div>
+    </div>
+  </div>
+
+  <div class="errors-counter">
+    <div class="error-found-circle" *ngFor="let n of [].constructor(7); let i = index"
+      [attr.checked]="((spotTheDifferenceService.foundErrors$ | async)?.length || 0) >= i + 1 ? 'true' : null"
+    >
+    </div>
+  </div> 
+</div>
+
+

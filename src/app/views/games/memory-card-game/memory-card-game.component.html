@@ -1,0 +1,6 @@
+<div class="component-container" *ngIf="memoryCardGameService.running$ | async">
+  <app-memory-card 
+    *ngFor="let card of (memoryCardGameService.cards$ | async)"
+    [card]="card"
+  />
+</div>

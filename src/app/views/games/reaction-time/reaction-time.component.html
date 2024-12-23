@@ -1,0 +1,17 @@
+<div class="component-container">
+  <span>
+    Click the circle when the color 
+    <span
+      class="target-color-name"
+      [style.color]="reactionTimeService.targetColor$ | async" 
+    >
+      {{reactionTimeService.targetColor$ | async}}
+    </span> 
+    appears!
+  </span>
+
+  <div class="displayed-color"
+    (click)="reactionTimeService.onColorClick()"
+    [style.background-color]="reactionTimeService.currentColor$ | async"
+  ></div>
+</div>

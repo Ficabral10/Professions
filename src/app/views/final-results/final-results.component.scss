@@ -1,0 +1,16 @@
+.component-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 40rem;
+
+  p {
+    padding: 1rem;
+    background-color: var(--component-background-color);
+    border-radius: var(--border-radius);
+  
+    ::ng-deep * {
+      font-family: var(--text-font);
+    }
+  }
+}

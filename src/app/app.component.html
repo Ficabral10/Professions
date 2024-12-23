@@ -1,0 +1,21 @@
+<div class="app-container">
+  <div class="content-container">
+    <h1>{{gameSessionService.currentStepTitle$ | async}}</h1>
+    
+    <div *ngIf="gameSessionService.inGame$ | async" class="game-state-container">
+      <app-game-state-info type="score"/>
+      <app-game-state-info type="timer"/>
+    </div>
+
+    <div class="step-container">
+      <app-start-session *ngIf="(gameSessionService.currentStepId$ | async) === 'start'"/>
+      <app-countdown *ngIf="(gameSessionService.currentStepId$ | async) === 'countdown'"/>
+      <app-game-transition *ngIf="(gameSessionService.currentStepId$ | async) === 'game-transition'"/>
+      <app-memory-card-game *ngIf="(gameSessionService.currentStepId$ | async) === 'memory'"/>
+      <app-spot-the-difference *ngIf="(gameSessionService.currentStepId$ | async) === 'spot-the-difference'"/>
+      <app-reaction-time *ngIf="(gameSessionService.currentStepId$ | async) === 'reaction-time'"/>
+      <app-loading-results *ngIf="(gameSessionService.currentStepId$ | async) === 'loading-results'"/>
+      <app-final-results *ngIf="(gameSessionService.currentStepId$ | async) === 'final-results'"/>
+    </div>
+  </div>
+</div>

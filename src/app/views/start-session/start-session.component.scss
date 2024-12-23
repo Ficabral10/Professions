@@ -1,0 +1,22 @@
+.component-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 40rem;
+
+  p {
+    padding: 1rem;
+    background-color: var(--component-background-color);
+    border-radius: var(--border-radius);
+  }
+
+  input {
+    border: none;
+    background-color: var(--component-background-color);
+    border-radius: var(--border-radius);
+    font-family: var(--text-font);
+    height: 3rem;
+    font-size: 1.8rem;
+    padding-left: 1rem;
+  }
+}

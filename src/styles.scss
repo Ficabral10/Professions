@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Julius+Sans+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --background-color: #0F0F43;
+  --component-background-color: #FFFFFF;
+  --component-background-color-hover: #e2e2e2;
+  --component-background-color-active: #c9c9c9;
+  --component-background-color-light: #FFFFFFCC; 
+  --text-color: #0F0F43;
+  --heading-color: #FFFFFF;
+  --primary-font: "Julius Sans One", sans-serif;
+  --text-font: "Roboto", sans-serif;
+  --heading-font: "Jockey One", sans;
+  --border-radius: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: var(--primary-font);
+  letter-spacing: 0.6px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-family: var(--text-font);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+  font-weight: 500;
+}
+
+span, p {
+  color: var(--text-color);
+}
+
+button {
+  align-self: center;
+  height: 3rem;
+  width: 10rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--text-color);
+  font-family: var(--heading-font);
+  letter-spacing: 2px;
+  border-radius: var(--border-radius);
+  background-color: var(--component-background-color);
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--component-background-color-hover);
+  }
+
+  &:active {
+    background-color: var(--component-background-color-active);
+  }
+}
