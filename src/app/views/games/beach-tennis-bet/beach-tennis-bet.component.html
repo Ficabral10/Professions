@@ -1,0 +1,8 @@
+<div class="bet-container" *ngIf="betService.running$ | async">
+  <p>Who will win the match?</p>
+  <button (click)="choose('Team A')">Team A</button>
+  <button (click)="choose('Team B')">Team B</button>
+</div>
+<div class="result-container" *ngIf="!(betService.running$ | async)">
+  <p *ngIf="betService.currentWinner">Winner: {{ betService.currentWinner }}</p>
+</div>

@@ -17,7 +17,7 @@ export class FinalResultsComponent {
   public gameSessionService = inject(GameSessionService);
 
   formattedSummary$ = this.gameSessionService.processedResults$.pipe(
-    map(results => this.formatSummary(results?.gptSummary || ''))
+    map(results => this.formatSummary(results?.message || ''))
   );
 
   formatSummary(summary: string): string {

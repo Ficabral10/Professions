@@ -11,9 +11,7 @@
       <app-start-session *ngIf="(gameSessionService.currentStepId$ | async) === 'start'"/>
       <app-countdown *ngIf="(gameSessionService.currentStepId$ | async) === 'countdown'"/>
       <app-game-transition *ngIf="(gameSessionService.currentStepId$ | async) === 'game-transition'"/>
-      <app-memory-card-game *ngIf="(gameSessionService.currentStepId$ | async) === 'memory'"/>
-      <app-spot-the-difference *ngIf="(gameSessionService.currentStepId$ | async) === 'spot-the-difference'"/>
-      <app-reaction-time *ngIf="(gameSessionService.currentStepId$ | async) === 'reaction-time'"/>
+      <app-beach-tennis-bet *ngIf="(gameSessionService.currentStepId$ | async) === 'beach-tennis-bet'"/>
       <app-loading-results *ngIf="(gameSessionService.currentStepId$ | async) === 'loading-results'"/>
       <app-final-results *ngIf="(gameSessionService.currentStepId$ | async) === 'final-results'"/>
     </div>

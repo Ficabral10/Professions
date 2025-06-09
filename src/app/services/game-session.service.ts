@@ -1,9 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
-import { MemoryCardGameService } from './memory-card-game.service';
-import { ProcessedGameResults, ProcessGameResultsParams, ResultsService } from './results.service';
-import { SpotTheDifferenceService } from './spot-the-difference.service';
-import { ReactionTimeService } from './reaction-time.service';
+import { ProcessedGameResults } from './results.service';
+import { BeachTennisBetService } from './beach-tennis-bet.service';
 
 interface GameSessionStep {
   id: string;
@@ -42,38 +40,21 @@ export interface GameTransitionParams {
 })
 export class GameSessionService {
 
-  private memoryCardGameService = inject(MemoryCardGameService);
-  private spotTheDifferenceService = inject(SpotTheDifferenceService);
-  private reactionTimeService = inject(ReactionTimeService);
-  private resultsService = inject(ResultsService);
+  private beachTennisBetService = inject(BeachTennisBetService);
 
   bipAudio = new Audio();
   finalBipAudio = new Audio();
 
   userName: string = '';
 
-  games: Game[] = [ 
+  games: Game[] = [
     {
-      id: 'memory',
-      title: 'Memory Card Game',
+      id: 'beach-tennis-bet',
+      title: 'Beach Tennis Bet',
       isGameStep: true,
-      service: this.memoryCardGameService,
+      service: this.beachTennisBetService,
       audio: new Audio()
     },
-    {
-      id: 'reaction-time',
-      title: 'Reaction Time Game',
-      isGameStep: true,
-      service: this.reactionTimeService,
-      audio: new Audio()
-    },
-    {
-      id: 'spot-the-difference',
-      title: 'Spot The Difference',
-      isGameStep: true,
-      service: this.spotTheDifferenceService,
-      audio: new Audio()
-    }, 
   ]
 
   gameResults: {[key: string]: GameResults} = {}
@@ -81,7 +62,7 @@ export class GameSessionService {
   steps: GameSessionStep[] = [
     {
       id: 'start',
-      title: 'Professions Game',
+      title: 'Beach Tennis Bet Game',
       isGameStep: false
     },
     {
@@ -134,12 +115,7 @@ export class GameSessionService {
   private _transitionParams = new BehaviorSubject<GameTransitionParams | null>(null);
   transitionParams$ = this._transitionParams.asObservable();
 
-  private _processedResults = new BehaviorSubject<ProcessedGameResults | null>(
-    {
-      "message": "Dados processados com sucesso",
-      "gptSummary": "Based on Alisson's performance with classical music in the memory game, it points towards a focus on detail and organization, indicating a fit for **Academics and Researchers**. This role supports analytical tasks and promotes concentration with music that enhances memory and focus.\n\n**Examples of Professions:**\n1. Research Scientist\n2. University Professor\n3. Historian"
-    }
-  );
+  private _processedResults = new BehaviorSubject<ProcessedGameResults | null>(null);
   processedResults$ = this._processedResults.asObservable();
 
   currentGame: Game | null = null;
@@ -160,8 +136,6 @@ export class GameSessionService {
 
   preloadImages() {
     const imageUrls = [
-      ...this.spotTheDifferenceService.imageSets.map(imageSet => imageSet.correctImage),
-      ...this.spotTheDifferenceService.imageSets.map(imageSet => imageSet.wrongImage),
       'assets/images/score.png',
       'assets/images/timer.png',
     ];
@@ -319,33 +293,13 @@ export class GameSessionService {
   }
 
   loadResults() {
-    const params: ProcessGameResultsParams = {
-      user: this.userName || '',
-      memoryGameResult: {
-        musicGenre: 'Classical',
-        percentageOfHits: this.gameResults['memory'].score,
-        timeToComplete: this.gameResults['memory'].timeLeft,
-        timeUsed: this.gameResults['memory'].timeUsed,
-      },
-      reactionGameResult: {
-        musicGenre: 'Electronic Dance Music',
-        percentageOfHits: this.gameResults['reaction-time'].score,
-        timeToComplete: this.gameResults['reaction-time'].timeLeft,
-        timeUsed: this.gameResults['reaction-time'].timeUsed,
-      },
-      spotTheDifferenceGameResult: {
-        musicGenre: 'Jazz',
-        percentageOfHits: this.gameResults['spot-the-difference'].score,
-        timeToComplete: this.gameResults['spot-the-difference'].timeLeft,
-        timeUsed: this.gameResults['spot-the-difference'].timeUsed,
-      }
-    }
-
-    this.resultsService.processGameResults(params).subscribe({
-      next: (results) => {
-        this._processedResults.next(results);
-        this.nextStep();
-      }
+    const resultText = this.gameResults['beach-tennis-bet']?.score === 100
+      ? 'You won the bet!'
+      : 'You lost the bet.';
+    this._processedResults.next({
+      message: resultText,
+      gptSummary: ''
     });
+    this.nextStep();
   }
 }
