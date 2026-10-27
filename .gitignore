@@ -1,0 +1,29 @@
+# Build output
+/dist
+/tmp
+/out-tsc
+
+# Dependencies
+/node_modules
+
+# IDEs and editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sublime-workspace
+
+# Angular cache
+/.angular/cache
+.sass-cache/
+
+# Firebase
+.firebase/
+firebase-debug*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Misc
+npm-debug.log
+yarn-error.log

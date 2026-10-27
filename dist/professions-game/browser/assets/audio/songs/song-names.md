@@ -1,3 +1,0 @@
-- Classic: J.S. Bach - Prelude in G Minor
-- Jazz: TrackTribe - Smoke Jacket Blues 
-- EDM: Diamond Ace - Too Soon
